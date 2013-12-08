@@ -1,0 +1,18 @@
+Hay Market Infographic
+
+Overview
+At Three Guys Farms we would like to understand the hay market better. 
+We think that this would benefit us, as well as other hay farmers. 
+To those ends, we shall build an infographic that will create better insight into this data. 
+
+Goal
+Implement an interactive view into publicly available hay market data from the Agricultural Marketing Service (AMS). 
+
+Features
+The interactive view shall display data by state in the US
+  There shall be a color-coded display of hay prices for each state
+    Note: not all states are listed in the AMS
+    Red for highest and green for lowest
+  The user shall be able to zoom into geographic regions
+  There shall be overlays for states, allowing the user to see the details of the data
+There shall be a date slider, allowing the user to visualize the data across time
