@@ -36,7 +36,7 @@ report_names = ["MG_GR310",
   "TO_GR310"]
 
 report_names.each do |name|
-  open("#{name}20131205.txt", "wb") do |file|
+  open("unprocessed_reports/#{name}20131205.txt", "wb") do |file|
     open("http://search.ams.usda.gov/mndms/2013/12/#{name}20131205.TXT") do |uri|
       file.write(uri.read)
     end
