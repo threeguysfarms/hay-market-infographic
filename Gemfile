@@ -1,3 +1,5 @@
 source "https://rubygems.org"
 
-# gem "nokogiri"
+gem "nokogiri"
+gem "mechanize"
+gem "pry"
