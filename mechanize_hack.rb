@@ -25,19 +25,8 @@ a.get("http://search.ams.usda.gov/mnsearch/mnsearch.aspx") do |page|
     "__EVENTVALIDATION" => page.parser.at("input#__EVENTVALIDATION")["value"], 
     "__VIEWSTATE" => page.parser.at("input#__VIEWSTATE")["value"]
   }
-    #page.form_with(:id => "simplesearch", :method => "POST") do |search|
-    ##binding.pry
-    ##search.__EVENTVALIDATION = page.parser.at("input#__EVENTVALIDATION")["value"]
-    ##search.__VIEWSTATE = page.parser.at("input#__VIEWSTATE")["value"]
-    #search.add_field!("locationCode", "GX")
-    #search.add_field!("commodityCode", "GR")
-    #search.add_field!("wireCode", "312")
-    #search.add_field!("documentType", "MNDMS_TEXT")
-    #search.add_field!("timeRange", "Any")
-    #search.add_field!("resultCount", "10")
-    #search.add_field!("sortField", "Date")
-    #search.add_field!("sortOrder", "true")
-    #search.add_field!("goButton.x", "15")
-    #search.add_field!("goButtoin.y", "7")
-    p search_results.parser.css("table#MNResultGrid tr td a")
+
+  search_results.parser.css("table#MNResultGrid tr td:first a").each do |report_link|
+    p report_link["href"]
+  end
 end
