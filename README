@@ -8,11 +8,14 @@ To those ends, we shall build an infographic that will create better insight int
 Goal
 Implement an interactive view into publicly available hay market data from the Agricultural Marketing Service (AMS). 
 
+Note: It's possible that NASS data may be better suited for this.
+A very solid NASS data set is available at http://www.nass.usda.gov/Quick_Stats/Lite/#4CA35CA3-4CD0-3704-AE8C-15AF4D707FED
+
 Features
 The interactive view shall display data by state in the US
   There shall be a color-coded display of hay prices for each state
-    Note: not all states are listed in the AMS
-    Red for highest and green for lowest
+    Note: not all states are listed in the AMS/NASS
+    Red for highest (hot) and blue for lowest (cold)
   The user shall be able to zoom into geographic regions
   There shall be overlays for states, allowing the user to see the details of the data
 There shall be a date slider, allowing the user to visualize the data across time
