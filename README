@@ -33,8 +33,14 @@ http://www.jeromecukier.net/blog/2011/08/11/d3-scales-and-color/
 Crucial:
 https://gist.github.com/mbostock/5557726
 
+If we want to let the command line handle th projection:
 ogr2ogr -f GeoJSON -where "iso_a2 = 'US'" -t_srs 'EPSG:3310' states.json ne_50m_admin_1_states_provinces_lakes.shp
 topojson -o us-states-by-state-name.json --width 960 --height 500 --id-property=name -p name -- states.json
+
+Otherwise, more simply:
+ogr2ogr -f GeoJSON -where "iso_a2 = 'US'" states.json ne_50m_admin_1_states_provinces_lakes.shp
+topojson -o us-states-by-state-name.json --width 960 --height 500 --id-property=name -p name -- states.json
+In this case, we'll just let d3 handle the projection :)
 
 https://github.com/mbostock/d3/wiki/Quantitative-Scales
 https://github.com/mbostock/topojson/wiki/Command-Line-Reference
