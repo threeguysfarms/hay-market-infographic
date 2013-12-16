@@ -34,7 +34,7 @@ Crucial:
 https://gist.github.com/mbostock/5557726
 
 ogr2ogr -f GeoJSON -where "iso_a2 = 'US'" -t_srs 'EPSG:3310' states.json ne_50m_admin_1_states_provinces_lakes.shp
-topojson -o states-with-prices-per-ton.json --width 960 --height 500 --id-property=name -p name,price-per-ton=+price-per-ton -- states.json
+topojson -o us-states-by-state-name.json --width 960 --height 500 --id-property=name -p name -- states.json
 
 https://github.com/mbostock/d3/wiki/Quantitative-Scales
 https://github.com/mbostock/topojson/wiki/Command-Line-Reference

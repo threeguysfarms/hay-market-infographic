@@ -38,7 +38,7 @@ var svg = d3.select("body").append("svg")
     .attr("height", height);
 
 queue()
-  .defer(d3.json, "states-with-prices-per-ton.json")
+  .defer(d3.json, "us-states-by-state-name.json")
   .defer(d3.csv, 
     "acreage_yield_production_2012.csv", 
       function(d) { 
