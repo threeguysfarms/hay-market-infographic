@@ -6,16 +6,36 @@ We think that this would benefit us, as well as other hay farmers.
 To those ends, we shall build an infographic that will create better insight into this data. 
 
 Goal
-Implement an interactive view into publicly available hay market data from the Agricultural Marketing Service (AMS). 
+Implement an interactive view into publicly available hay market data from the NASS.
 
-Note: It's possible that NASS data may be better suited for this.
+NASS data is excellent for this.
 A very solid NASS data set is available at http://www.nass.usda.gov/Quick_Stats/Lite/#4CA35CA3-4CD0-3704-AE8C-15AF4D707FED
 
 Features
 The interactive view shall display data by state in the US
   There shall be a color-coded display of hay prices for each state
-    Note: not all states are listed in the AMS/NASS
+    Note: not all states are listed in the NASS
     Red for highest (hot) and blue for lowest (cold)
   The user shall be able to zoom into geographic regions
   There shall be overlays for states, allowing the user to see the details of the data
 There shall be a date slider, allowing the user to visualize the data across time
+
+Key d3.js resources:
+http://bost.ocks.org/mike/map/
+
+http://bl.ocks.org/mbostock
+
+https://gist.github.com/mbostock/5925375
+
+Semi-important to understand how to map ranges onto domains and represent color
+http://www.jeromecukier.net/blog/2011/08/11/d3-scales-and-color/
+
+Crucial:
+https://gist.github.com/mbostock/5557726
+
+ogr2ogr -f GeoJSON -where "iso_a2 = 'US'" -t_srs 'EPSG:3310' states.json ne_50m_admin_1_states_provinces_lakes.shp
+topojson -o states-with-prices-per-ton.json --width 960 --height 500 --id-property=name -p name,price-per-ton=+price-per-ton -- states.json
+
+https://github.com/mbostock/d3/wiki/Quantitative-Scales
+https://github.com/mbostock/topojson/wiki/Command-Line-Reference
+https://github.com/mbostock/d3/wiki/Colors
