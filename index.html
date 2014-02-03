@@ -16,7 +16,15 @@
 
   <body>
     <div class="container">
-      <aside id="filters"></aside>     
+      <aside id="filters">
+        Hay prices for year: <div class="btn-group">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            <span id="selected_year">2012</span> <span class="caret"></span>
+          </button>
+          <ul id="year-filter" class="dropdown-menu" role="menu">
+          </ul>
+        </div>
+      </aside>
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
