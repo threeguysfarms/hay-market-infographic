@@ -2,7 +2,7 @@ var HayMarketInfographic = (function() {
   var width = 960;
       height = 500;
 
-  var aypByName = d3.map(); 
+  var aypByNameAndYear = d3.map(); 
 
   var years = [];
 
@@ -20,6 +20,12 @@ var HayMarketInfographic = (function() {
       .attr("height", height)
       .attr("class", "center-block");
 
+  var formats = {
+      currency: d3.format('$.2f')
+  };
+
+  var rdBuColors = colorbrewer.RdBu[10].reverse();
+
   queue()
     .defer(d3.json, "us-states-by-state-name.json")
     .defer(d3.csv, 
@@ -33,7 +39,11 @@ var HayMarketInfographic = (function() {
               render($(this).attr("id"), usMap);
             });
           }
-          aypByName.set(d.YEAR+"~"+d.name, +d["price-per-ton"]);
+          var year = aypByNameAndYear.get(d.YEAR);
+          if (!year) {
+            year = aypByNameAndYear.set(d.YEAR, d3.map());
+          }
+          year.set(d.name, +d["price-per-ton"]);
         })
     .await(ready);
 
@@ -43,17 +53,37 @@ var HayMarketInfographic = (function() {
   } 
 
   function render(year, us) {
-    var quantize = d3.scale.linear()
-      .domain(d3.extent(d3.values(aypByName)))
+    var colors = d3.scale.linear()
+      .domain(d3.extent(d3.values(aypByNameAndYear.get(year))))
       .range(["blue", "red"]);
 
     svg.selectAll(".state")
         .data(topojson.feature(us, us.objects.states).features)
-      .enter().append("path")
+        .enter().append("path")
         .attr("class", "states")
         .style("fill", function(d) { 
-          return quantize(aypByName.get(year + "~" + d.id)); 
+          return colors(aypByNameAndYear.get(year).get(d.id)); 
         })
         .attr("d", path);
+
+    var legend = d3.select('#legend')
+      .html('')
+      .append('ul')
+        .attr('class', 'list-inline');
+
+    var keys = legend.selectAll('li.key')
+        .data(colors.range());
+
+    keys.enter().append('li')
+        .attr('class', 'key')
+        .style('border-top-color', String)
+        .text(function(d) {
+          if (d === "blue") { 
+            return formats.currency(colors.domain()[0]);
+          } else {
+            return formats.currency(colors.domain()[1]);
+          }
+        });
+
   }
 })();
