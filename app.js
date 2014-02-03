@@ -13,7 +13,8 @@ var HayMarketInfographic = (function() {
 
   var svg = d3.select(".container").append("svg")
       .attr("width", width)
-      .attr("height", height);
+      .attr("height", height)
+      .attr("class", "center-block");
 
   queue()
     .defer(d3.json, "us-states-by-state-name.json")
