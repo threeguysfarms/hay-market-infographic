@@ -19,7 +19,7 @@ var HayMarketInfographic = (function() {
   queue()
     .defer(d3.json, "us-states-by-state-name.json")
     .defer(d3.csv, 
-      "acreage_yield_production_2012.csv", 
+      "acreage_yield_production_93_13.csv", 
         function(d) { 
           aypByName.set(d.name, +d["price-per-ton"]);
         })
